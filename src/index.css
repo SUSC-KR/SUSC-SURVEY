@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,15 +24,65 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
+  height: 100%;
+  background: #6d72f91e;
+
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  padding: 1em;
+}
+
+@media screen and (min-width: 820px)  {
+  #root {
+    width: calc(820px - 1em);
+  }
+}
+
+header {
+  margin-bottom: 1em;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+header div span {
+  border-left: #ccc solid 1px;
+  padding-inline-start: 0.5rem;
+  padding-inline-end: 0.5rem;
+  word-break: keep-all;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-top: 0;
+  word-break: keep-all;
+}
+
+main {
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
 }
 
 button {
@@ -46,6 +96,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
@@ -67,6 +118,20 @@ button:focus-visible {
   }
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.graphicIcon {
+  height: 3rem;
+}
+
+.typoIcon {
+  height: 2rem;
+}
+
 .container {
   max-width: 600px;
   margin: 20px auto;
@@ -86,3 +151,7 @@ button:focus-visible {
 .question {
   margin: 10px 0;
 }
+
+
+
+
