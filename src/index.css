@@ -156,7 +156,39 @@ input[type="submit"]:focus-visible,
   margin: 10px 0;
 }
 
+label {
+  margin-inline-start: 1em;
+  font-weight: 500;
+  display: block;
+  word-break: keep-all;
+}
 
+input[type="email"],
+input[type="number"],
+input[type="text"] {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin: 1em;
+
+  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+input[type="email"]:focus-visible,
+input[type="number"]:focus-visible,
+input[type="text"]:focus-visible {
+  outline: solid 2px #646cff;
+
+}
+
+input[type="radio"], input[type="checkbox"] {
+  accent-color: #646cff;
+  margin: 0.5em 0.25em;
+}
+
+.required {
+  color: #ec7777;
+}
 
 
 
