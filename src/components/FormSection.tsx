@@ -1,3 +1,6 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 interface FormSectionProps {
   title: string;
   description: string;
@@ -12,7 +15,9 @@ const FormSection: React.FC<FormSectionProps> = ({
   return (
     <div>
       <h2>{title}</h2>
-      <p>{description}</p>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {description.trim()}
+      </ReactMarkdown>
       <div>{children}</div>
     </div>
   );
