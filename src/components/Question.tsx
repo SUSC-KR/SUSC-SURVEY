@@ -2,7 +2,7 @@ import { useState } from "react";
 
 interface QuestionProps {
   id: string;
-  type: "text" | "checkbox" | "radio";
+  type: "text" | "checkbox" | "radio" | string;
   label: string;
   options?: string[];
   onChange: (id: string, value: string | string[]) => void;
