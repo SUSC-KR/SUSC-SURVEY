@@ -1,5 +1,6 @@
 :root {
-  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", Inter,
+    system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -38,7 +39,7 @@ body {
   padding: 1em;
 }
 
-@media screen and (min-width: 820px)  {
+@media screen and (min-width: 820px) {
   #root {
     width: calc(820px - 1em);
   }
@@ -85,7 +86,9 @@ main {
   box-sizing: border-box;
 }
 
-button, input[type="submit"], .btn {
+button,
+input[type="submit"],
+.btn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -97,7 +100,9 @@ button, input[type="submit"], .btn {
   transition: border-color 0.25s;
 }
 
-button:hover, input[type="submit"]:hover, .btn:hover {
+button:hover,
+input[type="submit"]:hover,
+.btn:hover {
   border-color: #646cff;
 }
 button:focus,
@@ -117,8 +122,18 @@ input[type="submit"]:focus-visible,
   a:hover {
     color: #747bff;
   }
-  button, input[type="submit"], .btn {
+  button,
+  input[type="submit"],
+  .btn {
     background-color: #f9f9f9;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  main,
+  header {
+    background: #333333;
+    color: #ffffff;
   }
 }
 
@@ -171,17 +186,18 @@ input[type="text"] {
   padding: 0.5rem;
   margin: 1em;
 
-  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", Inter,
+    system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 input[type="email"]:focus-visible,
 input[type="number"]:focus-visible,
 input[type="text"]:focus-visible {
   outline: solid 2px #646cff;
-
 }
 
-input[type="radio"], input[type="checkbox"] {
+input[type="radio"],
+input[type="checkbox"] {
   accent-color: #646cff;
   margin: 0.5em 0.25em;
 }
@@ -189,6 +205,3 @@ input[type="radio"], input[type="checkbox"] {
 .required {
   color: #ec7777;
 }
-
-
-
