@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/SUSC-WEB-FE/",
+  base: "/",
   optimizeDeps: {
     include: ["react-markdown", "remark-gfm"],
   },
