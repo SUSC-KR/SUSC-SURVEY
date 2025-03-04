@@ -8,7 +8,7 @@ const ParticipationSurvey: React.FC = () => {
   const [formData, setFormData] = useState<{ [key: string]: any }>({});
   const [email, setEmail] = useState("");
 
-  // 설문 제목과 내용. 설문용도에 맞게 변경하기!
+  // 설문 제목과 내용. 설문용도에 맞게 변경하기! (todo)
   const [surveyTitle] = useState("SUSC 2024 Winter 참여조사");
   const [surveyDescription] = useState(`
 안녕하세요, 대학교류단체 **SUSC(에스유에스씨)** 입니다.
@@ -26,7 +26,7 @@ const ParticipationSurvey: React.FC = () => {
 
   console.log(surveyDescription);
 
-  // 이구간을 자유롭게 수정하기!
+  // 이구간을 자유롭게 수정하기! (todo)
   const sections = [
     {
       title: "답변자 정보",
@@ -196,41 +196,65 @@ const ParticipationSurvey: React.FC = () => {
   };
 
   const handleSubmit = async () => {
+    const API_KEY = import.meta.env.VITE_API_KEY;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (!emailRegex.test(email)) {
       alert("유효한 이메일을 입력하세요.");
       return;
     }
 
-    const submission: any = {
-      설문타이틀: surveyTitle,
-      이메일: email,
-    };
-
-    sections.forEach((section) => {
-      submission[section.title] = {};
-      section.questions.forEach((q) => {
-        submission[section.title][q.label] = formData[q.id] || null;
-      });
-    });
-
-    console.log("제출된 데이터:", JSON.stringify(submission, null, 2));
+    const formId = "ParticipationSurvey2024W"; // 설문종류+년도+시즌 (todo)
+    const checkUrl = `https://www.cpprhtn.com/form/forms/${encodeURIComponent(
+      formId
+    )}/answers/check-submitted`;
+    const submitUrl = `https://www.cpprhtn.com/form/forms/${encodeURIComponent(
+      formId
+    )}/answers`;
 
     try {
-      const response = await fetch("/test/form-post", {
-        // TODO: 제출주소 변경후 해당 주석 지우기
+      const checkResponse = await fetch(checkUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-api-key": API_KEY,
         },
-        body: JSON.stringify(submission),
+        body: JSON.stringify({ email }),
       });
 
-      if (response.ok) {
-        alert("제출이 완료되었습니다!");
-      } else {
-        alert("제출에 실패했습니다.");
+      if (!checkResponse.ok) {
+        throw new Error("이메일 중복 확인 요청 실패");
       }
+
+      const { isSubmitted } = await checkResponse.json();
+      if (isSubmitted) {
+        alert("이미 제출한 이메일입니다.");
+        return;
+      }
+
+      const submissionData: any = { email, data: {} };
+
+      sections.forEach((section) => {
+        section.questions.forEach((q) => {
+          submissionData.data[q.id] = formData[q.id] || null;
+        });
+      });
+
+      const submitResponse = await fetch(submitUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      if (!submitResponse.ok) {
+        throw new Error("설문 제출 요청 실패");
+      }
+
+      const { id } = await submitResponse.json();
+      alert("제출이 완료되었습니다! 제출 ID: " + id);
     } catch (error) {
       console.error("제출 중 오류 발생:", error);
       alert("네트워크 오류가 발생했습니다.");

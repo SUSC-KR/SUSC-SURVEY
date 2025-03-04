@@ -12,4 +12,13 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react-markdown", "remark-gfm"],
   },
+  server: {
+    proxy: {
+      "/forms": {
+        target: "https://cpprhtn.com",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
