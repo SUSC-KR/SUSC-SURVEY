@@ -1,6 +1,6 @@
 import { useState } from "react";
-import FormSection from "@components/FormSection";
-import Question from "@components/Question";
+import FormSection from "./../components/FormSection";
+import Question from "./../components/Question";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 

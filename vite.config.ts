@@ -5,11 +5,6 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   base: "/SUSC-WEB-FE/",
-  resolve: {
-    alias: {
-      "@components": path.resolve(__dirname, "src/components"),
-    },
-  },
   optimizeDeps: {
     include: ["react-markdown", "remark-gfm"],
   },
