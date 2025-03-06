@@ -8,8 +8,8 @@ const Root = () => {
         {/* <li>
           <Link to="/ParticipationSurvey">참여 설문</Link>
         </li> */}
-        <li>
-          <Link to="/DemandSurvey">수요 설문</Link>
+        <li className="survey-link">
+          <Link to="/DemandSurvey">수요 조사 참여하기</Link>
         </li>
       </ul>
     </>
