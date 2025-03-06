@@ -8,72 +8,55 @@ const DemandSurvey: React.FC = () => {
   const [formData, setFormData] = useState<{ [key: string]: any }>({});
   const [email, setEmail] = useState("");
 
-  // 설문 제목과 내용. 설문용도에 맞게 변경하기!
-  const [surveyTitle] = useState("SUSC 2024 Winter 수요조사");
+  // 설문 제목과 내용. 설문용도에 맞게 변경하기! (todo)
+  const [surveyTitle] = useState("SUSC 2025 Summer 수요조사");
   const [surveyDescription] = useState(`
-SUSC 2024 Winter 수요 조사
+### 안녕하세요, 대학교류단체 SUSC(에스유에스씨)입니다.
 
-안녕하세요, 대학교류단체 SUSC(에스유에스씨)입니다.
+지난 **SUSC 2024 Summer/Winter** 기간 동안 **20개 이상의 대학**에서 많은 대학생 분들이 참여해주셨습니다.
 
-지난 SUSC 2024 Summer 행사에 20개의 대학에서 많은 대학생 분들이 참여해주셨는데요. 성원에 힘입어 이번 2024학년도 겨울 방학을 맞이하여 더 큰 규모의 방학 교류 행사를 진행하려고 합니다.
+이번 여름방학 기간 동안 여러분들이 어떤 활동을 하고 싶어 하시는지 알아보기 위해 **수요 조사를 진행**하고자 합니다. 
 
-진행하기에 앞서, 여러분들이 어떤 활동을 하고 싶어 하시는지 알아보기 위해 수요 조사를 진행합니다. 양질의 활동을 제공해 드릴 수 있도록 다양한 의견을 주시면 감사하겠습니다!
+양질의 활동을 제공해 드릴 수 있도록 다양한 의견을 주시면 감사하겠습니다!
 
-이 양식은 모든 응답자의 이메일을 자동으로 수집합니다.
+이 수요조사를 바탕으로, **현업 멘토분들을 모셔** 스터디나 프로젝트를 기획할 예정입니다. 이를 통해 여러분들의 성장에 도움이 될 수 있는 기회를 제공하고자 합니다.
     `);
 
-  // 이구간을 자유롭게 수정하기!
+  // 이구간을 자유롭게 수정하기! (todo)
   const sections = [
     {
-      title: "답변자 정보",
-      description: `### 답변자 기본 정보
-  이름, 전화번호, 소속 학교 등 기본 정보를 입력해주세요. 개인 참여일 경우 "기타"에 본인 학교 이름을 적어주세요.`,
+      ttitle: "답변자 정보",
+      description: `### 참여자의 기본 정보를 입력해주세요.
+      디스코드 사용자 명 
+
+![img](https://github.com/user-attachments/assets/14e9779a-f23f-4413-858a-1eb97fb94604)
+
+`,
       questions: [
         { id: "name", type: "text", label: "이름" },
         {
-          id: "phone",
+          id: "discordId",
           type: "text",
-          label: "전화번호",
-          placeholder: "000-0000-0000 형식으로 넣어주세요.",
+          label: "Discord ID (디스코드 채널 닉네임)",
         },
         {
           id: "school",
-          type: "radio",
-          label: "소속 학교",
-          options: [
-            "가천대학교",
-            "경북대학교",
-            "경희대학교",
-            "금오공과대학교",
-            "동국대학교",
-            "동아대학교",
-            "배재대학교",
-            "서강대학교",
-            "서울과학기술대학교",
-            "서울여자대학교",
-            "순천향대학교",
-            "연세대학교",
-            "우송대학교",
-            "한국공학대학교",
-            "한국외국어대학교",
-            "한국해양대학교",
-            "한남대학교",
-            "한양대학교",
-            "DGIST",
-            "기타",
-          ],
+          type: "text",
+          label: "소속 학교 (ex: OO대학교)",
         },
       ],
     },
     {
       title: "관심 있는 분야 선택",
       description: `### 관심 있는 분야
-  공부해보고 싶은 분야를 모두 선택해주세요. '관심 없음' 또는 '기타'로 추가적인 관심 분야를 적을 수 있습니다.`,
+  공부해보고 싶은 분야를 모두 선택해주세요. 
+  
+  \`기타\` 를 체크하여 추가적인 관심 분야를 적을 수 있습니다.`,
       questions: [
         {
           id: "fieldInterest",
           type: "checkbox",
-          label: "공부해보고 싶은 분야",
+          label: "<공부해보고 싶은 분야>",
           options: [
             "관심없음",
             "보안",
@@ -91,17 +74,10 @@ SUSC 2024 Winter 수요 조사
             "기타",
           ],
         },
-      ],
-    },
-    {
-      title: "관심 있는 프로그래밍 언어 선택",
-      description: `### 관심 있는 프로그래밍 언어
-  공부해보고 싶은 프로그래밍 언어를 모두 선택해주세요. '관심 없음' 또는 '기타'로 추가적인 언어를 적을 수 있습니다.`,
-      questions: [
         {
           id: "languageInterest",
           type: "checkbox",
-          label: "공부해보고 싶은 프로그래밍 언어",
+          label: "<공부해보고 싶은 프로그래밍 언어>",
           options: [
             "관심없음",
             "C++",
@@ -125,23 +101,6 @@ SUSC 2024 Winter 수요 조사
           type: "text",
           label:
             "만약 여러분이 직접 만든다면 어떤 활동을 진행할지 간단하게 적어주세요.",
-        },
-      ],
-    },
-    {
-      title: "OT & 네트워킹 파티 참여 여부",
-      description: `### OT & 네트워킹 파티 참여 여부
-  SUSC 2024 Winter 활동을 본격적으로 시작하기 전에 1/11에 OT 및 네트워킹 파티가 진행될 예정입니다. 오프라인 및 온라인 모두 참여 가능합니다.`,
-      questions: [
-        {
-          id: "otParticipation",
-          type: "radio",
-          label: "OT에 참여하실 의향이 있으신가요?",
-          options: [
-            "예, 오프라인으로 참여하겠습니다.",
-            "예, 온라인으로 참여하겠습니다.",
-            "아니오",
-          ],
         },
       ],
     },
@@ -172,7 +131,7 @@ SUSC 2024 Winter 수요 조사
       return;
     }
 
-    const formId = "DemandSurvey2024W"; // 설문종류+년도+시즌 (todo)
+    const formId = "DemandSurvey2025s"; // 설문종류+년도+시즌s/w (todo)
     const checkUrl = `https://www.cpprhtn.com/form/forms/${encodeURIComponent(
       formId
     )}/answers/check-submitted`;
@@ -235,7 +194,7 @@ SUSC 2024 Winter 수요 조사
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {surveyDescription.trim()}
       </ReactMarkdown>
-      <label>이메일</label>
+      <label>이메일 *</label>
       <input
         type="email"
         value={email}
