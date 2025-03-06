@@ -24,8 +24,6 @@ const ParticipationSurvey: React.FC = () => {
 감사합니다.
     `);
 
-  console.log(surveyDescription);
-
   // 이구간을 자유롭게 수정하기! (todo)
   const sections = [
     {

@@ -22,8 +22,6 @@ SUSC 2024 Winter 수요 조사
 이 양식은 모든 응답자의 이메일을 자동으로 수집합니다.
     `);
 
-  console.log(surveyDescription);
-
   // 이구간을 자유롭게 수정하기!
   const sections = [
     {
