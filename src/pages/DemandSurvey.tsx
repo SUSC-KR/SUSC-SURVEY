@@ -25,7 +25,7 @@ const DemandSurvey: React.FC = () => {
   // 이구간을 자유롭게 수정하기! (todo)
   const sections = [
     {
-      ttitle: "답변자 정보",
+      title: "답변자 정보",
       description: `### 참여자의 기본 정보를 입력해주세요.
       디스코드 사용자 명 
 
