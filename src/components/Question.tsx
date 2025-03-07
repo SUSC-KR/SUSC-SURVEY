@@ -81,7 +81,14 @@ const Question: React.FC<QuestionProps> = ({
         ))}
       {type === "radio" &&
         options?.map((opt) => (
-          <label key={opt} style={{ marginRight: "10px" }}>
+          <span
+            key={opt}
+            style={{
+              marginRight: "10px",
+              display: "inline-flex",
+              alignItems: "center",
+            }}
+          >
             <input
               type="radio"
               name={id}
@@ -89,8 +96,22 @@ const Question: React.FC<QuestionProps> = ({
               checked={value === opt}
               onChange={handleChange}
             />
-            {opt}
-          </label>
+            <label style={{ marginLeft: "5px" }}>{opt}</label>
+            {opt === "네" && value === "네" && (
+              <input
+                type="text"
+                value={otherText}
+                onChange={handleOtherChange}
+                placeholder="직접 입력"
+                style={{
+                  marginLeft: "5px",
+                  padding: "3px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                }}
+              />
+            )}
+          </span>
         ))}
     </div>
   );
