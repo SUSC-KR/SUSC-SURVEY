@@ -119,6 +119,60 @@ input[type="submit"]:focus-visible,
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+th {
+  background: #646cff;
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+tr:hover {
+  background: rgba(100, 108, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  table {
+    background: #333;
+    border-color: #444;
+  }
+
+  th {
+    background: #535bf2;
+  }
+
+  td {
+    border-color: #444;
+  }
+
+  tr:nth-child(even) {
+    background: #444;
+  }
+
+  tr:hover {
+    background: rgba(83, 91, 242, 0.3);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
