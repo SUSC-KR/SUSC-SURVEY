@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Papa from "papaparse";
 
 const BASE_URL =
@@ -8,7 +8,7 @@ const Admin = () => {
   const [formId, setFormId] = useState("");
   const [apiKey, setApiKey] = useState("");
   const [data, setData] = useState([]);
-  const [headers, setHeaders] = useState([]);
+  const [headers, setHeaders] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchData = () => {
@@ -28,8 +28,8 @@ const Admin = () => {
       .then((csvText) => {
         Papa.parse(csvText, {
           header: false,
-          complete: (result) => {
-            const formattedData = result.data.map((row) => {
+          complete: (result: any) => {
+            const formattedData = result.data.map((row: any) => {
               const [id, email, jsonStr, timestamp] = row;
               let parsedJson = {};
               try {
@@ -102,7 +102,7 @@ const Admin = () => {
 
       {data.length > 0 ? (
         <>
-          <table border="1">
+          <table border={1}>
             <thead>
               <tr>
                 {headers
@@ -119,13 +119,17 @@ const Admin = () => {
                     .filter(
                       (key) => !["id", "email", "timestamp"].includes(key)
                     )
-                    .map((key, i) => (
-                      <td key={i}>
-                        {Array.isArray(row[key])
-                          ? row[key].join(", ")
-                          : row[key] || "없음"}
-                      </td>
-                    ))}
+                    .map((key, i) => {
+                      const value = row[key];
+
+                      return (
+                        <td key={i}>
+                          {Array.isArray(value)
+                            ? (value as string[]).join(", ") // 명시적 타입 캐스팅
+                            : value ?? "없음"}
+                        </td>
+                      );
+                    })}
                 </tr>
               ))}
             </tbody>
