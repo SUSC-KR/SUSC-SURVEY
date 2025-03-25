@@ -18,7 +18,7 @@ const FormSection: React.FC<FormSectionProps> = ({
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {description.trim()}
       </ReactMarkdown>
-      <div>{children}</div>
+      <div style={{ margin: "8px 0" }}>{children}</div>
     </div>
   );
 };

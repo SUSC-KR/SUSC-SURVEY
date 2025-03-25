@@ -9,26 +9,47 @@ const ParticipationSurvey: React.FC = () => {
   const [email, setEmail] = useState("");
 
   // 설문 제목과 내용. 설문용도에 맞게 변경하기! (todo)
-  const [surveyTitle] = useState("SUSC 2024 Winter 참여조사");
+  const [surveyTitle] = useState("SUSC 2025 Summer 참가신청");
   const [surveyDescription] = useState(`
-안녕하세요, 대학교류단체 **SUSC(에스유에스씨)** 입니다.
+### 안녕하세요, 대학교류단체 **SUSC(에스유에스씨)** 입니다.  
 
-지난 **SUSC 2024 Summer 행사**에 보내주신 뜨거운 관심과 성원에 진심으로 감사드립니다.  
-**2024학년도 겨울 방학**을 맞이하여 더욱 풍성하고 다양한 프로그램으로 구성된 대규모 스터디 교류 행사를 준비하게 되었습니다.
+지난 **SUSC 2024 Summer/Winter** 행사에 많은 관심과 참여를 보내주신 여러분께 감사드립니다.  
+올해도 여러분의 의견을 바탕으로 **SUSC 2025 Summer 프로그램**을 준비하고자 합니다.  
 
-이번 행사는 대학생 여러분이 서로의 지식과 경험을 공유하며 교류를 통해 성장할 수 있는 특별한 기회가 될 것입니다.  
-또한, 각 대학의 문화와 학문적 배경을 이해하고 폭넓은 네트워크를 형성할 수 있는 장을 제공할 예정입니다.
+**현업 멘토와 함께하는 스터디 및 프로젝트**를 통해 대학생 여러분이 실질적인 경험을 쌓고, 서로의 지식과 경험을 공유할 수 있는 기회를 제공할 예정입니다.  
+또한, 다양한 전공과 배경을 가진 참가자들과의 교류를 통해 폭넓은 네트워크를 형성할 수 있는 장을 마련하고자 합니다.  
 
-많은 학생들이 함께할수록 더 의미 있는 자리가 될 수 있기에, 여러분의 적극적인 참여와 관심을 부탁드립니다.
+여러분의 적극적인 참여가 더 의미 있는 프로그램을 만들어갑니다.  
+많은 관심과 신청 부탁드립니다!  
 
-감사합니다.
+### 개설예정 스터디
+| 이름   | 소속                        | 강의명                                              | 일정                  |
+|--------|-----------------------------|-----------------------------------------------------|-----------------------|
+| 남정현 | 메가존클라우드, Microsoft MVP .Net | 테크니컬라이팅: 기술 문서를 작성하는 법            | 주 1회, 2시간, 1주 과정 |
+| 정규석 | WhaTap Labs                  | 리눅스/애플리케이션 모니터링 방법                  | 주 1회, 2시간, 4주 과정 |
+| 임근석 | 복지24                        | Figma에서 코드까지, 클릭 한 번으로 줄이는 소통 비용 | 주 1회, 2시간         |
+| 김민상 | 와이즈넛                      | 알고리즘 초급                                      | 주 1회, 2시간, 토요일, 5~6주 예상 |
+| 김민상 | 와이즈넛                      | 알고리즘 중급                                      | 주 1회, 2시간, 일요일, 5~6주 예상 |
+| 임상빈 | 그로메트릭                    | 도커 컨테이너를 활용한 웹 서버 배포                | 시간 미정              |
+| 한상곤 | 부산대학교 교수, Microsoft MVP | C#으로 만드는 물리엔진                            | 시간 미정              |
+| 정미르 | 안랩                          | 백엔드? 그냥 Django로 시작하면 돼                  | 주 1회, 2시간, 4주 과정 |
+| 황제연 | SUSC                         | 자바 성능 튜닝 이야기 (Book Study)                  | 시간 미정            |
+
+*현재 자세한 스터디 일정은 확정되지 않았으며, 추후 픽스되는 대로 공유드릴 예정입니다.
+
+감사합니다.  
     `);
 
   // 이구간을 자유롭게 수정하기! (todo)
   const sections = [
     {
       title: "답변자 정보",
-      description: `### 참여자의 기본 정보를 입력해주세요.`,
+      description: `### 참여자의 기본 정보를 입력해주세요.
+      디스코드 사용자 명 
+
+![img](https://github.com/user-attachments/assets/14e9779a-f23f-4413-858a-1eb97fb94604)
+
+`,
       questions: [
         { id: "name", type: "text", label: "이름" },
         {
@@ -38,30 +59,8 @@ const ParticipationSurvey: React.FC = () => {
         },
         {
           id: "school",
-          type: "radio",
-          label: "소속 학교",
-          options: [
-            "가천대학교",
-            "경북대학교",
-            "경희대학교",
-            "금오공과대학교",
-            "동국대학교",
-            "동아대학교",
-            "배재대학교",
-            "서강대학교",
-            "서울과학기술대학교",
-            "서울여자대학교",
-            "순천향대학교",
-            "연세대학교",
-            "우송대학교",
-            "한국공학대학교",
-            "한국외국어대학교",
-            "한국해양대학교",
-            "한남대학교",
-            "한양대학교",
-            "DGIST",
-            "기타",
-          ],
+          type: "text",
+          label: "소속 학교 (ex: OO대학교 || OOIST)",
         },
       ],
     },
@@ -74,17 +73,16 @@ const ParticipationSurvey: React.FC = () => {
           type: "checkbox",
           label: "희망 스터디",
           options: [
-            "퀀트 스터디(SUSC ETF로 화성 갈끄니까잇)",
-            "Apache Airflow 워크샵",
-            "너는 전혀 Pythonic 하고있지 않아",
-            "너의 논문은? AI part",
-            "Chess Engine in Your Favorite Language",
-            "자바+코틀린 나만의 앱 만들기",
-            "리눅스 시스템 프로그래밍을 활용한 기초 OS 개념 잡기",
-            "알고리즘 스터디 (초급)",
+            "테크니컬라이팅: 기술 문서를 작성하는 법  ",
+            "리눅스/애플리케이션 모니터링 방법",
+            "Figma에서 코드까지, 클릭 한 번으로 줄이는 소통 비용",
+            "알고리즘 초급",
+            "알고리즘 중급",
+            "도커 컨테이너를 활용한 웹 서버 배포",
+            "C#으로 만드는 물리엔진",
+            "백엔드? 그냥 Django로 시작하면 돼",
             "알고리즘 스터디 (중급)",
-            "Figma 스터디",
-            "기타",
+            "	자바 성능 튜닝 이야기 (Book Study)",
           ],
         },
         {
@@ -115,56 +113,36 @@ const ParticipationSurvey: React.FC = () => {
         {
           id: "otherStudyPlan",
           type: "text",
-          label: "개설해서 진행해보고 싶은 스터디",
+          label:
+            "자바 성능 튜닝 이야기 (Book Study) 처럼 SUSC에서 여러분들이 개설해서 진행해보고 싶은 스터디가 있다면 자유롭게 작성해주세요.",
         },
       ],
     },
     {
       title: "스터디 외 활동 참여 조사",
-      description: `### 스터디 외에 참여하고 싶은 활동이 있다면 선택해주세요.`,
+      description: `### 스터디 외에 참여하고 싶은 활동이 있다면 선택해주세요.
+      
+오프라인 OT: 스터디 시작전에 참가자들끼리 모여서 다양한 교류를 하는 활동. 서울 2호선 라인 어딘가에서 주로 열린다.
+
+성과공유포럼: 방학동한 스터디한 성과물을 부산의 SW성과공유포럼에서 발표하는 활동. 1박 숙박비가 지원된다.
+
+SUSCON: 오프라인 OT와 마찬가지로 SUSC 참가자들끼리 스터디가 종료된 후 정보 공유 및 네트워킹을 하는 활동.
+
+주말 모각코: 모여서 각자 코딩의 준말로 수요가 있다면 서울과 부산지역은 모각코를 열 예정.
+
+Geeknews 라디오: 긱뉴스에 올라오는 이슈들을 매주 톺아보며, 관련 이야기나 이슈들을 곁들여 자유롭게 토론하는 컨텐츠.
+`,
       questions: [
         {
           id: "participationType",
           type: "checkbox",
           label: "참여할 활동",
-          options: ["디코데이(OT)", "SUSCON", "주말 모각코"],
-        },
-        {
-          id: "discordJoin",
-          type: "radio",
-          label: "디스코드 서버 참여",
-          options: ["네", "아니오"],
-        },
-      ],
-    },
-    {
-      title: "디코데이(OT) 참여 여부",
-      description: `### 디코데이(OT)와 네트워킹 행사 참여 여부를 선택해주세요.`,
-      questions: [
-        {
-          id: "otParticipation",
-          type: "radio",
-          label: "디코데이(OT) 참여 여부",
           options: [
-            "예, 오프라인으로 참여하겠습니다.",
-            "예, 온라인으로 참여하겠습니다.",
-            "아니오",
-          ],
-        },
-      ],
-    },
-    {
-      title: "SUSCON 참여 여부",
-      description: `### SUSCON 참여 여부를 선택해주세요.`,
-      questions: [
-        {
-          id: "susconParticipation",
-          type: "radio",
-          label: "SUSCON 참여 여부",
-          options: [
-            "예, 오프라인으로 참여하겠습니다.",
-            "예, 온라인으로 참여하겠습니다.",
-            "아니오",
+            "오프라인 OT",
+            "성과공유포럼",
+            "SUSCON(성과공유회)",
+            "주말 모각코",
+            "Geeknews 라디오",
           ],
         },
       ],
@@ -183,7 +161,7 @@ const ParticipationSurvey: React.FC = () => {
           id: "studyLocation",
           type: "checkbox",
           label: "참여 가능한 장소",
-          options: ["서울(홍대, 강남)", "부산(서면)"],
+          options: ["서울(홍대, 강남)", "부산(서면)", "기타"],
         },
       ],
     },
@@ -202,7 +180,7 @@ const ParticipationSurvey: React.FC = () => {
       return;
     }
 
-    const formId = "ParticipationSurvey2024W"; // 설문종류+년도+시즌 (todo)
+    const formId = "ParticipationSurvey2025s"; // 설문종류+년도+시즌s/w (todo)
     const checkUrl = `https://www.cpprhtn.com/form/forms/${encodeURIComponent(
       formId
     )}/answers/check-submitted`;
@@ -265,7 +243,7 @@ const ParticipationSurvey: React.FC = () => {
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {surveyDescription.trim()}
       </ReactMarkdown>
-      <label>이메일</label>
+      <label>이메일 *</label>
       <input
         type="email"
         value={email}
