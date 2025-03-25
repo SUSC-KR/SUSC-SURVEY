@@ -46,6 +46,22 @@ const Question: React.FC<QuestionProps> = ({
       {type === "text" && (
         <input type="text" value={value as string} onChange={handleChange} />
       )}
+      {type === "long-text" && (
+        <textarea
+          value={value as string}
+          onChange={handleChange}
+          rows={5}
+          style={{
+            width: "100%",
+            minHeight: "100px",
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            resize: "vertical",
+          }}
+          placeholder="100자 이상 입력해주세요."
+        />
+      )}
       {type === "checkbox" &&
         options?.map((opt) => (
           <span

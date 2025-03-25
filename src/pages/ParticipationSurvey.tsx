@@ -81,28 +81,27 @@ const ParticipationSurvey: React.FC = () => {
             "도커 컨테이너를 활용한 웹 서버 배포",
             "C#으로 만드는 물리엔진",
             "백엔드? 그냥 Django로 시작하면 돼",
-            "알고리즘 스터디 (중급)",
             "	자바 성능 튜닝 이야기 (Book Study)",
           ],
         },
         {
           id: "studyMotivation1",
-          type: "text",
+          type: "long-text",
           label: "[선택 1]스터디 지원 동기 (1000자 내외)",
         },
         {
           id: "studyGoals1",
-          type: "text",
+          type: "long-text",
           label: "[선택 1]스터디를 통해 얻고자 하는 점 (1000자 내외)",
         },
         {
           id: "studyMotivation2",
-          type: "text",
+          type: "long-text",
           label: "[선택 2]스터디 지원 동기 (1000자 내외)",
         },
         {
           id: "studyGoals2",
-          type: "text",
+          type: "long-text",
           label: "[선택 2]스터디를 통해 얻고자 하는 점 (1000자 내외)",
         },
         {
@@ -112,7 +111,7 @@ const ParticipationSurvey: React.FC = () => {
         },
         {
           id: "otherStudyPlan",
-          type: "text",
+          type: "long-text",
           label:
             "자바 성능 튜닝 이야기 (Book Study) 처럼 SUSC에서 여러분들이 개설해서 진행해보고 싶은 스터디가 있다면 자유롭게 작성해주세요.",
         },
