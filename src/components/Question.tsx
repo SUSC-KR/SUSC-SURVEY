@@ -20,9 +20,11 @@ const Question: React.FC<QuestionProps> = ({
   );
   const [otherText, setOtherText] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     if (type === "checkbox") {
-      const newValue = e.target.checked
+      const newValue = (e.target as HTMLInputElement).checked
         ? [...(value as string[]), e.target.value]
         : (value as string[]).filter((v) => v !== e.target.value);
 
