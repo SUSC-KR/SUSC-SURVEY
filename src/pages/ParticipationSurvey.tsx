@@ -63,7 +63,7 @@ const ParticipationSurvey: React.FC = () => {
         {
           id: "school",
           type: "text",
-          label: "소속 학교 (ex: OO대학교 || OOIST)",
+          label: "* 소속 학교 (ex: OO대학교 || OOIST)",
         },
       ],
     },
@@ -183,6 +183,11 @@ Geeknews 라디오는 긱뉴스에 올라오는 이슈들을 매주 톺아보며
       alert("유효한 이메일을 입력하세요.");
       return;
     }
+
+    if (!formData.school || formData.school.trim() === "") {
+    alert("소속 학교를 입력해주세요.");
+    return;
+  }
 
     const formId = "ParticipationSurvey2025s"; // 설문종류+년도+시즌s/w (todo)
     const checkUrl = `https://www.cpprhtn.com/form/forms/${encodeURIComponent(
